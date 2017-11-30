@@ -1,0 +1,29 @@
+{
+  "name": "rudrax/rudrax.dev",
+  "type": "project",
+  "description": "My Rudrax Project",
+  "license": "proprietary",
+  "keywords": [
+  ],
+  "config" : {
+    "vendor-dir" : "lib"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app/"
+    }
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "bootphp/rudrax": ">=0.0.0",
+    "rudrax/redbean": "^0.0.0",
+    "elasticsearch/elasticsearch": "~5.0",
+    "fabpot/goutte": "^3.2",
+    "prabhat2k15/elasticsearch": "^2.3"
+  },
+  "require-dev": {
+    "boilerplatez/docs" : "dev-master"
+  },
+  "scripts": {
+  }
+}

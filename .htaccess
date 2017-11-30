@@ -1,0 +1,42 @@
+############################################################################################
+#Section 1
+RewriteEngine On
+IndexIgnore *
+Options +FollowSymLinks -Multiviews -Indexes
+############################################################################################
+# ----------------------------------------------------------------------
+# CORS-enabled images (@crossorigin)
+# ----------------------------------------------------------------------
+# Send CORS headers if browsers request them; enabled by default for images.
+# developer.mozilla.org/en/CORS_Enabled_Image
+# blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
+# hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
+# wiki.mozilla.org/Security/Reviews/crossoriginAttribute
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type, ACCOUNT-TOKEN"
+    Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
+
+################################### Your Custom Rules starts here ############################################
+
+
+################################### Your Custom Rules ends here ###############################################
+
+RewriteRule \.(properties)$ - [F]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/build/cache_file/%{REQUEST_URI} -f
+RewriteRule ^(.+)$ build/cache_file/$1
+
+RewriteCond $1 !^(src|dist)
+#RewriteCond $1 !^(.*\.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?q=$1 [ENV=INDEX:true,L,QSA]
+RewriteRule ^$ index.php?q=    [ENV=INDEX:true,L,QSA]
+
+
+
+
