@@ -61,8 +61,8 @@ namespace app\controller {
       $model->assign('manager',$manager);
       $store=StoreService::getAllStore($this->user->uid);
       $model->assign('store',$store);
-      // $product = ProductService::getProduct();
-      // $model->assign('product',$product);
+      $product = ProductService::getProduct($this->user->managerid);
+      $model->assign('product',$product);
 
       if($this->user->isValid() && $this->user->role=='manager'){
         return "index";

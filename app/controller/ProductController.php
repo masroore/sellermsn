@@ -43,7 +43,7 @@ namespace app\controller {
                 $superbean->country = $country;
                 $superbean->state = $state;
                 $superbean->city = $city;
-                $superbean->managerid = $_SESSION['managerid'] ?? 0;
+                $superbean->managerid = $this->user->managerid;
                 $superbean->created = R::isoDateTime();
             $id = R::store($superbean);
 

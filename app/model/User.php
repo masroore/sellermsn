@@ -25,7 +25,7 @@ namespace app\model {
             //After login is done succesfully
         }
 
-        public function auth($username, $password,$type)
+        public function auth($username, $password, $type)
         {
           if($type=='bm')
           {
